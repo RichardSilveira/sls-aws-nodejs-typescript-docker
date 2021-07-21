@@ -21,12 +21,12 @@
     "url": "https://github.com/AnomalyInnovations/serverless-nodejs-starter.git"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.77",
-    "@types/jest": "^26.0.23",
-    "@types/node": "^15.12.5",
     "@babel/preset-env": "^7.14.7",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@types/aws-lambda": "^8.10.77",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.12.5",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
     "babel-jest": "^26.6.3",
@@ -48,6 +48,7 @@
   "dependencies": {
     "aws-sdk": "^2.935.0",
     "jest": "^26.6.3",
+    "serverless-provisioned-concurrency-autoscaling": "^1.2.0",
     "uninstall": "^0.0.0",
     "uuid": "^8.3.2"
   }

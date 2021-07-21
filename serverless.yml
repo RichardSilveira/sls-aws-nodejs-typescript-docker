@@ -8,6 +8,7 @@ package:
 plugins:
   - serverless-bundle # Package our functions with Webpack
   - serverless-offline
+  - serverless-provisioned-concurrency-autoscaling
 
 custom:
   serverless-offline:
@@ -43,6 +44,8 @@ provider:
 functions:
   hello:
     handler: src/handler.hello
+    provisionedConcurrency: 1
+    concurrencyAutoscaling: true #all settings: https://www.serverless.com/plugins/serverless-provisioned-concurrency-autoscaling
     events:
       - http:
           path: hello
