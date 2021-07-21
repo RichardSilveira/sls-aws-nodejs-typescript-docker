@@ -1,0 +1,25 @@
+on:
+  push:
+    tags:
+      - v*
+name: deploy
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Create deploy image
+      run: docker-compose -f docker-compose.deploy.yml build
+    - name: Run Deploy
+      run: docker-compose -f docker-compose.deploy.yml up
+      env:
+        NODE_ENV: development
+        LAMBDA_ENV: test
+        REGION: ${{secrets.REGION}}
+        STAGE: ${{secrets.STAGE}}
+        SLACK_SIGNING_SECRET: ${{secrets.SLACK_SIGNING_SECRET}}
+        SLACK_BOT_TOKEN: ${{secrets.SLACK_BOT_TOKEN}}
+        SLACK_USER_TOKEN: ${{secrets.SLACK_USER_TOKEN}}
+        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}

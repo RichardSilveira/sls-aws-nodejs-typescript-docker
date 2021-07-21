@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  app:
+    container_name: aws-nodejs-typescript-docker-template
+    build:
+      context: .
+    image: aws-nodejs-typescript-docker-template:local
+    ports:
+      - 4000:4000
+      - 9229:9229
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      STAGE: ${STAGE}
+      REGION: ${REGION}
+      MY_SECRET: ${MY_SECRET}
+    command: node --inspect-brk=0.0.0.0:9229 /app/node_modules/.bin/serverless offline --host 0.0.0.0 --httpPort 4000 --printOutput --stage dev --region us-east-1 --profile tt-admin
+
+  ngrok:
+    image: wernight/ngrok:latest
+    ports:
+      - 4040:4040
+    depends_on:
+      - app
+    environment:
+      NGROK_PROTOCOL: http
+      NGROK_PORT: app:4000
+      NGROK_AUTH: ${NGROK_AUTH} # https://dashboard.ngrok.com/get-started/your-authtoken

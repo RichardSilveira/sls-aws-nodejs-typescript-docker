@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  app:
+    container_name: aws-nodejs-typescript-docker-template-test
+    build:
+      context: .
+      target: test
+    image: aws-nodejs-typescript-docker-template:test
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      NODE_ENV: development
+      STAGE: ${STAGE}
+      REGION: ${REGION}
+      MY_SECRET: ${MY_SECRET}

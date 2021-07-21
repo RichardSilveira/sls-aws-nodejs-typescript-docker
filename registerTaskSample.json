@@ -1,0 +1,13 @@
+{
+  "employeeId": "005013b9-6eb0-4d7d-a524-c506186ec071",
+  "employeeName": "Jane Doe",
+  "employeeEmail": "janedoe@gmail.com",
+  "focalPointId": "d39baf7f-95c4-4225-98be-4814ae7db6b6",
+  "focalPointName": "George Clinton",
+  "projectId": "7026c0f2-aab8-498c-9774-981c82517198",
+  "projectName": "Newsela Staff Augmentation",
+  "taskDate": "2021-06-27T17:46:29+0000",
+  "taskCategory": "Development",
+  "taskDescription": "DB Maintenance",
+  "taskTime": 1
+}

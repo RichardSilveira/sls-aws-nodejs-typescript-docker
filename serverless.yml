@@ -1,0 +1,49 @@
+# NOTE: update this with your service name
+service: aws-nodejs-typescript-docker-template
+
+# Create an optimized package for our functions
+package:
+  individually: true
+
+plugins:
+  - serverless-bundle # Package our functions with Webpack
+  - serverless-offline
+
+custom:
+  serverless-offline:
+    host: 0.0.0.0
+    httpPort: 4000
+  bundle:
+    tsConfig: "tsconfig.eslint.json"
+    linting: false
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  memorySize: 512
+  timeout: 30
+  role: arn:aws:iam::051826142769:role/lambda-task-registration-role
+  apiKeys:
+    - companyInternalUsagePlan:
+      - company-internal-shared-key # this key can be used for a Custom Authorizer
+  usagePlan:
+    - companyInternalUsagePlan:
+        throttle:
+          burstLimit: 100
+          rateLimit: 200
+        quota:
+          limit: 200_000
+          period: MONTH
+
+  environment:
+    STAGE: ${opt:stage}
+    REGION: ${opt:region}
+    MY_SECRET: ${env:MY_SECRET}
+
+functions:
+  hello:
+    handler: src/handler.hello
+    events:
+      - http:
+          path: hello
+          method: get

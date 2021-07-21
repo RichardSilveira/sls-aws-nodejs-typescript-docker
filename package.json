@@ -1,0 +1,54 @@
+{
+  "name": "aws-nodejs-typescript-docker-template",
+  "version": "0.1.0-alpha",
+  "description": "A Node.js starter for Serverless Framework with ES6 and TypeScript support",
+  "main": "src/handler.ts",
+  "scripts": {
+    "local": "serverless offline start --printOutput --stage dev --region us-east-1 --profile my-profile",
+    "test": "npx --no-install jest",
+    "test:watch": "npx --no-install jest --watch",
+    "package": "set SLS_DEBUG=* && sls package --stage dev --region us-east-1 --aws-profile my-profile",
+    "deploy:local": "sls deploy --stage dev --region us-east-1 --aws-profile my-profile",
+    "deploy": "sls deploy --stage dev --region us-east-1",
+    "lint": "npx --no-install eslint --ext .ts ./src",
+    "compile": "tsc",
+    "postinstall": "husky install"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AnomalyInnovations/serverless-nodejs-starter.git"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.77",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.12.5",
+    "@babel/preset-env": "^7.14.7",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.0",
+    "serverless": "^2.50.0",
+    "serverless-bundle": "4.3.1",
+    "serverless-offline": "^7.0.0",
+    "serverless-pseudo-parameters": "^2.5.0",
+    "ts-jest": "^26.5.6",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.935.0",
+    "jest": "^26.6.3",
+    "uninstall": "^0.0.0",
+    "uuid": "^8.3.2"
+  }
+}

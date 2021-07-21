@@ -1,0 +1,3 @@
+{
+  "*.ts": "npx --no-install eslint --fix"
+}

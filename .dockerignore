@@ -1,0 +1,5 @@
+node_modules
+.webpack
+
+# To not copy secret to container
+.env
