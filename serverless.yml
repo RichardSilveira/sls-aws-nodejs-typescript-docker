@@ -24,10 +24,10 @@ provider:
   timeout: 30
   role: arn:aws:iam::051826142769:role/lambda-task-registration-role
   apiKeys:
-    - companyInternalUsagePlan:
-      - company-internal-shared-key # this key can be used for a Custom Authorizer
+    - myUsagePlan:
+      - my-api-key # this key can be used for a Custom Authorizer
   usagePlan:
-    - companyInternalUsagePlan:
+    - myUsagePlan:
         throttle:
           burstLimit: 100
           rateLimit: 200
