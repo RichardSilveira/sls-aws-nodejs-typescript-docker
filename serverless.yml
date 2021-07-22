@@ -37,8 +37,8 @@ provider:
           period: MONTH
 
   environment:
-    STAGE: ${opt:stage}
-    REGION: ${opt:region}
+    STAGE: ${env:STAGE}
+    REGION: ${env:REGION}
     MY_SECRET: ${env:MY_SECRET}
 
 functions:

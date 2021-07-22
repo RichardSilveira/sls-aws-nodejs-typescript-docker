@@ -7,9 +7,10 @@
     "local": "serverless offline start --printOutput --stage dev --region us-east-1 --profile my-profile",
     "test": "npx --no-install jest",
     "test:watch": "npx --no-install jest --watch",
-    "package": "set SLS_DEBUG=* && sls package --stage dev --region us-east-1 --aws-profile my-profile",
-    "deploy:local": "sls deploy --stage dev --region us-east-1 --aws-profile my-profile",
-    "deploy": "sls deploy --stage dev --region us-east-1",
+    "package": "set SLS_DEBUG=* && sls package",
+    "package:local": "set SLS_DEBUG=* && sls package --stage dev --region us-east-1 --aws-profile my-profile",
+    "deploy:local": "sls deploy --stage dev --region us-east-1 --aws-profile my-profile --package .serverless",
+    "deploy": "sls deploy --package .serverless",
     "lint": "npx --no-install eslint --ext .ts ./src",
     "compile": "tsc",
     "postinstall": "husky install"

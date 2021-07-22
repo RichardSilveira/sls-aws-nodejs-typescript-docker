@@ -1,5 +1,6 @@
 node_modules
 .webpack
+.serverless
 
 # To not copy secret to container
 .env

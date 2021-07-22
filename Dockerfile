@@ -19,12 +19,19 @@ COPY --from=build /app ./
 
 CMD ["npm", "run", "test"]
 
+FROM node:14-alpine AS package
+
+WORKDIR /app
+
+COPY --from=build /app ./
+
+RUN npm run package
 
 FROM node:14-alpine AS deploy
 
 WORKDIR /app
 
-COPY --from=build /app ./
+COPY --from=package /app ./
 
 CMD ["npm", "run", "deploy"]
 
