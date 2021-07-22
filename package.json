@@ -19,7 +19,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AnomalyInnovations/serverless-nodejs-starter.git"
+    "url": "https://github.com/RichardSilveira/sls-aws-nodejs-typescript-docker.git"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.7",
