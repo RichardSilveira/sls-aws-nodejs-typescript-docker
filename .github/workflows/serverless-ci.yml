@@ -14,17 +14,15 @@ jobs:
         NODE_ENV: development
         STAGE: ${{secrets.STAGE}}
         REGION: ${{secrets.REGION}}
-        MY_SECRET: ${MY_SECRET}
+        MY_SECRET: ${{secrets.MY_SECRET}}
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-    - name: Create Package Image
+    - name: Create Serverless Package
       run: docker-compose -f docker-compose.package.yml build
-    - name: Run Serverless Package
-      run: docker-compose -f docker-compose.package.yml up
       env:
         NODE_ENV: development
         STAGE: ${{secrets.STAGE}}
         REGION: ${{secrets.REGION}}
-        MY_SECRET: ${MY_SECRET}
+        MY_SECRET: ${{secrets.MY_SECRET}}
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}

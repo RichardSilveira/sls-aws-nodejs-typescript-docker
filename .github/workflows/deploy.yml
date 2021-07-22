@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Create deploy image
+    - name: Create Deploy image
       run: docker-compose -f docker-compose.deploy.yml build
     - name: Run Deploy
       run: docker-compose -f docker-compose.deploy.yml up
@@ -17,6 +17,6 @@ jobs:
         NODE_ENV: development
         STAGE: ${{secrets.STAGE}}
         REGION: ${{secrets.REGION}}
-        MY_SECRET: ${MY_SECRET}
+        MY_SECRET: ${{secrets.MY_SECRET}}
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
