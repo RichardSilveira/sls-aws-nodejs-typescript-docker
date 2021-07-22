@@ -4,13 +4,13 @@
   "description": "A Node.js starter for Serverless Framework with ES6 and TypeScript support",
   "main": "src/handler.ts",
   "scripts": {
-    "local": "serverless offline start --printOutput --stage dev --region us-east-1 --profile my-profile",
+    "local": "serverless offline start --printOutput --profile my-profile",
     "test": "npx --no-install jest",
     "test:watch": "npx --no-install jest --watch",
     "package": "set SLS_DEBUG=* && sls package",
-    "package:local": "set SLS_DEBUG=* && sls package --stage dev --region us-east-1 --aws-profile my-profile",
-    "deploy:local": "sls deploy --stage dev --region us-east-1 --aws-profile my-profile --package .serverless",
+    "package:local": "set SLS_DEBUG=* && sls package --aws-profile my-profile",
     "deploy": "sls deploy --package .serverless",
+    "deploy:local": "sls deploy --aws-profile my-profile",
     "lint": "npx --no-install eslint --ext .ts ./src",
     "compile": "tsc",
     "postinstall": "husky install"
@@ -49,6 +49,7 @@
   "dependencies": {
     "aws-sdk": "^2.935.0",
     "jest": "^26.6.3",
+    "serverless-dotenv-plugin": "^3.9.0",
     "serverless-provisioned-concurrency-autoscaling": "^1.2.0",
     "uninstall": "^0.0.0",
     "uuid": "^8.3.2"
