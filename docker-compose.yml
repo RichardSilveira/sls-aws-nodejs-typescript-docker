@@ -18,7 +18,8 @@ services:
       STAGE: ${STAGE}
       REGION: ${REGION}
       MY_SECRET: ${MY_SECRET}
-    command: node --inspect-brk=0.0.0.0:9229 /app/node_modules/.bin/serverless offline start --host 0.0.0.0 --httpPort 4000 --printOutput --stage dev --region us-east-1 --profile tt-admin
+    command: node --inspect-brk=0.0.0.0:9229 /app/node_modules/.bin/serverless offline start --host 0.0.0.0 --httpPort 4000 --printOutput --stage dev --region us-east-1 --profile my-profile
+    # todo: test this against VS Code, plus add notes about it 
 
   ngrok:
     image: wernight/ngrok:latest
