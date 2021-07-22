@@ -18,7 +18,7 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
         AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
     - name: Create Package Image
-        run: docker-compose -f docker-compose.package.yml build
+      run: docker-compose -f docker-compose.package.yml build
     - name: Run Serverless Package
       run: docker-compose -f docker-compose.package.yml up
       env:
