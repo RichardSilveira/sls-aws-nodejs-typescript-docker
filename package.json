@@ -9,8 +9,7 @@
     "test:watch": "npx --no-install jest --watch",
     "package": "set SLS_DEBUG=* && sls package",
     "package:local": "set SLS_DEBUG=* && sls package --aws-profile my-profile",
-    "deploy": "sls deploy --package .serverless",
-    "deploy:local": "sls deploy --aws-profile my-profile",
+    "deploy": "sls deploy",
     "lint": "npx --no-install eslint --ext .ts ./src",
     "compile": "tsc",
     "postinstall": "husky install"

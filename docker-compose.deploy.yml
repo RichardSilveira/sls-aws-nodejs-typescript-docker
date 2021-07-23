@@ -9,7 +9,7 @@ services:
     environment:
       NODE_ENV: development
       STAGE: ${STAGE}
-      REGION: us-east-1
+      REGION: ${REGION}
       MY_SECRET: ${MY_SECRET}
       AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
       AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}

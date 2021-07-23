@@ -8,6 +8,7 @@ package:
 plugins:
   - serverless-bundle # Package our functions with Webpack
   - serverless-offline
+  - serverless-dotenv-plugin
   - serverless-provisioned-concurrency-autoscaling
 
 custom:

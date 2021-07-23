@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  app:
+    container_name: aws-nodejs-typescript-docker-template-deploy-local
+    build:
+      context: .
+      target: deploy
+    image: aws-nodejs-typescript-docker-template:deploy-local
+    env_file:
+      - .env

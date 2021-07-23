@@ -75,6 +75,8 @@ I'm leveraging multi-staged builds in Docker, so you'll need to take a look at t
 
 While running in Github Actions, the env vars won't be read from a `.env` file inside Docker containers, instead, you'll need to inform them via `Github Action secrets` + `docker-compose`' environment args + `ARG/ENV` Dockerfile' instructions.
 
+note: Probably you'd like to test your deployment step locally sometimes, to do that you can run `docker-compose -f docker-compose.deploy.local.yml build`, then `docker-compose -f docker-compose.deploy.local.yml up` - *notice the env vars will be readed from your local `.env` file. Plus, you can test your function in AWS by running `aws lambda get-function --function-name=<aws-nodejs-typescript-docker-template-dev-hello> --profile <my-profile> --region <region>`*  
+
 ### 😵‍💫 Continuous Deployment
 
 The commands `test` and `package` run whenever you push something to the remote.
@@ -91,6 +93,3 @@ After the deploy is done, you can run `aws lambda list-functions --profile <my-p
 - Configure sonar
 
 - Create an example repository using this template and code a scenario using DynamoDb
-
-- Get rid of the `serverless.local.yml` file by using a more complex variables environment management scenario.
-  https://www.serverless.com/blog/devops-serverless-variables
