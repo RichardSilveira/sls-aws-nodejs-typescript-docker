@@ -91,3 +91,6 @@ After the deploy is done, you can run `aws lambda list-functions --profile <my-p
 - Configure sonar
 
 - Create an example repository using this template and code a scenario using DynamoDb
+
+- Get rid of the `serverless.local.yml` file by using a more complex variables environment management scenario.
+  https://www.serverless.com/blog/devops-serverless-variables
