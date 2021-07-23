@@ -9,17 +9,21 @@ Welcome! Here you will find useful information to debug, test, run, and deploy y
 
 ### 🤔 What the heck is this?
 
-A professional serverless framework template for the stack **AWS, Node.js, Typescript, and Docker** with some cool features that you'll enjoy!
+A professional serverless framework template for the stack **AWS, Node.js, Typescript and Docker** with some cool features that you'll enjoy!
 
 ### ✅ Table of contents
 - [Features](#-cool-additional-features)
 - [Extra Plugins](#-serverless-plugins)
 - [Prerequisites](#-prerequisites)
-
+- [Installation](#-installation)
+- [Running the project](#-to-run-the-project-locally-while-developing)
+- [Github Actions](#-to-run-the-project-remotely-from-github)
+- [Continuous Deployment](#-continuous-deployment)
+- [Next steps](#-next-steps)
 
 ### 😎 Cool additional features
 
-- **[Docker](https://docs.docker.com/get-started/overview/)** - To easy setup a stable CI/CD environment, plus to test locally some infrastructure such as dynamodb, and others.
+- **[Docker](https://docs.docker.com/get-started/overview/)** - To easily set up a stable CI/CD environment, plus to test some infrastructure such as dynamoDb and others locally.
 - **[Jest](https://jestjs.io/)** - To test using one of the most famous JS testing libraries nowadays
 - **[Husky](https://typicode.github.io/husky/#/)** - To improves your commit leveraging git hooks
 - **[Conventional Commits](https://www.conventionalcommits.org/en/)** - To allow your team to add more semantic meaning to your git history
@@ -32,17 +36,19 @@ A professional serverless framework template for the stack **AWS, Node.js, Types
   - [serverless-dotenv-plugin](https://www.npmjs.com/package/serverless-dotenv-plugin) - In this template we're using it **only** to read the envs from a `.env` file while running the function locally - `npm run local` 
   - [serverless-provisioned-concurrency-autoscaling](https://medium.com/neiman-marcus-tech/serverless-provisioned-concurrency-autoscaling-3d8ec23d10c) - Because configure it in CloudFormation by each function is a nightmare! This guy have created an awesome plugin!
 
-  > To properly work with Lambdas in AWS you need to understand in-depth two important concepts - Reserved Concurrency and Provisioned Concurrency *(plus Auto-scaling)*, **seriously, in-depth**!
+  > To properly work with Lambdas in AWS, you need to understand in-depth two essential concepts - Reserved Concurrency and Provisioned Concurrency *(plus Auto-scaling)*, **seriously, in-depth**!
 
 ### 🎯 Prerequisites
 
-As an organized aws developer, you'll have to create an **aws profile** for your app - *all local commands are configured to run on top of a named profile - `my-profile`*
+As an organized AWS developer, you'll have to create an **aws profile** for your app - *all local commands are configured to run on top of a named profile - `my-profile`*.
 
-This template does not run entirelly inside docker containers, while developing you'll run everything locally without Docker - that will be used by your CI/CD workflows. So, besides **Docker** you'll need of **Node.js** installed *(LTS always, come on...)*
+You'll need to create a role - see `serverless.yml` > `provider` > `role` configuration section.
+You'll need Node.js installed *(LTS always, come on...)*.
+
 
 ### 🚀 Installation
 
-> Hey, don't worry, I made the hard work for you! You'll only need to about the name of your service *(sometimes it's hard task, I know, I know...)*
+> Hey, don't worry, I did the hard work for you! You'll only need to think about the name of your service *(sometimes it's a challenging task, I know, I know...)*
 
 Just run:
 
@@ -53,46 +59,35 @@ Just run:
 
 ### 🧑‍💻 To run the project locally while developing
 
-> reminder: Serverless templates are not about project folder's structure - it's up to you.
+> reminder: Serverless templates are not about the project folder's structure - that it's up to you, my friend.
 
 The simplest way is by running `npm run local` to run your function locally.
 
-However, a good approach is start by creating your tests + initial code base *(ts interfaces, classes, and others)* to do so you can run `npm run test` or even better `npm run test:watch` - *you'll be able to easily debug your code no matter the IDE you like.*
+However, a good approach is to start by creating your tests + initial codebase *(ts interfaces, classes, and others)* to do so, you can run `npm run test` or even better, `npm run test:watch` - *you'll be able to debug your code no matter the IDE you like easily.*
 
-<<Talk about integration tests by using docker - but first test it locally using Windows directly>>
+While developing the serverless framework (because we're using the dotenv plugin) will read the environment variables from a `.env` file at the root level, you'll need to create one with your env vars - everything is read from the env vars in this template.
 
-<<Which docker-compose file you'll use more while developing? Talk about it as well>>
+> Of course, you can use Docker as well; for this template my main focus is still to use Docker for the CI/CD workflow. But in future versions, I'll focus on Docker while developing locally. For this current version, you only won't debug while running your app inside Docker, but you can run and develop - take a look at the `docker-compose.yml` > `volume` configuration have a clear picture of it.
 
-<<remind about the semantic commit>>
+### 🤖💻 To run the project remotely from Github
 
-### 🤖💻 To run the project remotelly from Github
+I'm leveraging multi-staged builds in Docker, so you'll need to take a look at the `Dockerfile` + on each `docker-compose` files + `.github\workflows` folder.
 
-<<Explain each of the docker compose' files>>
+While running in Github Actions, the env vars won't be read from a `.env` file inside Docker containers, instead, you'll need to inform them via `Github Action secrets` + `docker-compose`' environment args + `ARG/ENV` Dockerfile' instructions.
 
-<<Talk about the github workflows>>
+### 😵‍💫 Continuous Deployment
 
-## WHys:
-dot-env | npm run local - to read from .env file only
+The commands `test` and `package` run whenever you push something to the remote.
 
-docker multi-staged builds
+The command `deploy` runs whenever you push a tag - *I'm leveraging the git-flow, but you can change it if you prefer*.
 
-##How to:
+After the deploy is done, you can run `aws lambda list-functions --profile <my-profile> --region <region>` to check if your function is there.
 
-Setup run everything locally without Docker
-Run locally with Docker
 
-#Setup:
-AWS Profile
-Package.json
-serverless.yaml
-Docker-compose files'
+### 👨‍🔧 Next steps
 
-- What to change in case of a new project/service name
+- Remove the serverless-bundle plugin (to give us more control over the webpack to allow some customization - and probably this will help us to debug with Docker while developing)
 
-# Some checkings:
+- Configure sonar
 
-aws lambda list-functions --profile my-profile --region us-east-1
-
-# Next steps?
-Sonar
-Remove the severless bundle
+- Create an example repository using this template and code a scenario using DynamoDb
