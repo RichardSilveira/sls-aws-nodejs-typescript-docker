@@ -52,7 +52,7 @@ You'll need Node.js installed *(LTS always, come on...)*.
 
 Just run:
 
-`serverless create --template-url https://github.com/RichardSilveira/sls-aws-nodejs-typescript-docker/ --path <service-name>`
+`serverless create --template-url https://github.com/RichardSilveira/sls-aws-nodejs-typescript-docker.git --path <service-name>`
 
 > note: "Service" is the term used by the serverless framework to refer to our "serverless microservice" or whatever other term you are used to, but you got the idea...
 
