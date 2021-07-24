@@ -4,7 +4,7 @@
   "description": "A Node.js starter for Serverless Framework with ES6 and TypeScript support",
   "main": "src/handler.ts",
   "scripts": {
-    "local": "serverless -c serverless.local.yml offline start --printOutput --profile my-profile",
+    "local": "serverless offline start --printOutput --profile my-profile",
     "test": "npx --no-install jest",
     "test:watch": "npx --no-install jest --watch",
     "package": "set SLS_DEBUG=* && sls package",
