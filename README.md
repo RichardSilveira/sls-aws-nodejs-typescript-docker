@@ -54,6 +54,8 @@ Just run:
 
 `serverless create --template-url https://github.com/RichardSilveira/sls-aws-nodejs-typescript-docker.git --path <service-name>`
 
+Plus, you should create a `.env` file to store your env vars - to be able to run the project locally with `npm run local`.
+
 > note: "Service" is the term used by the serverless framework to refer to our "serverless microservice" or whatever other term you are used to, but you got the idea...
 
 
